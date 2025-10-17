@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-    private static int lifeCount = 0;
-    private static GameObject currentBall;
+    private static GameManager _instance;
+    private static int _lifeCount = 0;
+    private static GameObject _currentBall;
     
     [Header("Ball Info")]
     public GameObject ballPrefab;
@@ -14,12 +15,14 @@ public class GameManager : MonoBehaviour
     [Header("Life and Delay")]
     public int initialLifeCount = 3;
     public float ballRespawnDelay = 1.0f;
+    
+    public static readonly UnityEvent OnBallRespawn = new UnityEvent();
 
     private void Awake()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = this;
+            _instance = this;
             return;
         }
         
@@ -28,23 +31,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        lifeCount =  initialLifeCount;
+        _lifeCount =  initialLifeCount;
         SpawnBall(ballDefaultSpawnPoint.position);
     }
     
     public void SpawnBall(Vector3 position)
     {
-        currentBall = Instantiate(ballPrefab, position, Quaternion.identity, transform);
+        _currentBall = Instantiate(ballPrefab, position, Quaternion.identity, transform);
+        OnBallRespawn.Invoke();
     }
 
     public void SpawnBallWithDelay()
     {
-        StartCoroutine(SpawnBallCorout());
+        StartCoroutine(SpawnBallCoroutine());
     }
     
-    public IEnumerator SpawnBallCorout()
+    public IEnumerator SpawnBallCoroutine()
     {
-        float respawnTimeLeft = instance.ballRespawnDelay;
+        float respawnTimeLeft = _instance.ballRespawnDelay;
 
         while (respawnTimeLeft > 0)
         {
@@ -57,12 +61,12 @@ public class GameManager : MonoBehaviour
 
     public static void LoseBall()
     {
-        lifeCount--;
-        Debug.Log($"Lives left : {lifeCount}");
+        _lifeCount--;
+        Debug.Log($"Lives left : {_lifeCount}");
         
-        if (lifeCount < 0)
+        if (_lifeCount < 0)
             return;
         
-        instance.SpawnBallWithDelay();
+        _instance.SpawnBallWithDelay();
     }
 }
