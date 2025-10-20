@@ -3,39 +3,48 @@ using UnityEngine;
 namespace Object
 {
     [RequireComponent(typeof(HingeJoint))]
-    public class PaddlePlayer : MonoBehaviour, IPaddle
+    public class PaddlePlayer : Paddle
     {
-        public new HingeJoint hingeJoint;
-        public KeyCode key = KeyCode.Space;
-        public float activatedPosition = 75;
-        public float originPosition = 0;
+        [SerializeField] PaddleSide side;
 
-        private JointSpring _jointSpring;
-        private float _targetPosition;
-    
-        void Start()
+        private void OnEnable()
         {
-            _jointSpring = hingeJoint.spring;
-        }
-    
-        void Update()
-        {
-            ChangeTargetPosition();
-            
-            _jointSpring.targetPosition = _targetPosition;
-            hingeJoint.spring = _jointSpring;
-        }
-
-        public void ChangeTargetPosition()
-        {
-            if (Input.GetKey(key))
+            if (side == PaddleSide.Left)
             {
-                _targetPosition = activatedPosition;
+                InputHandler.OnActivatePaddleL.AddListener(ActivatePaddle);
+                InputHandler.OnReleasePaddleL.AddListener(ReleasePaddle);
             }
-            else
+            else if (side == PaddleSide.Right)
             {
-                _targetPosition = originPosition;
+                InputHandler.OnActivatePaddleR.AddListener(ActivatePaddle);
+                InputHandler.OnReleasePaddleR.AddListener(ReleasePaddle);
             }
         }
+
+        private void OnDisable()
+        {
+            if (side == PaddleSide.Left)
+            {
+                InputHandler.OnActivatePaddleL.RemoveListener(ActivatePaddle);
+                InputHandler.OnReleasePaddleL.RemoveListener(ReleasePaddle);
+            }
+            else if (side == PaddleSide.Right)
+            {
+                InputHandler.OnActivatePaddleR.RemoveListener(ActivatePaddle);
+                InputHandler.OnReleasePaddleR.RemoveListener(ReleasePaddle);
+            }
+        }
+
+        private void ActivatePaddle()
+        {
+            activated = true;
+        }
+
+        private void ReleasePaddle()
+        {
+            activated = false;
+        }
+        
+        private enum PaddleSide { Left, Right }
     }
 }

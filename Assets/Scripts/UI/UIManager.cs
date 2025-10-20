@@ -7,8 +7,6 @@ namespace UI
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private GameObject menuParent;
-        [SerializeField] private KeyCode pauseKey = KeyCode.JoystickButton7;
-        [SerializeField] private KeyCode restartKey = KeyCode.JoystickButton6;
         
         public UnityEvent onPause  = new UnityEvent();
         public UnityEvent onResume = new UnityEvent();
@@ -17,6 +15,7 @@ namespace UI
         
         void Update()
         {
+            /*
             if (Input.GetKeyDown(pauseKey))
             {
                 if (_gamePaused)
@@ -34,7 +33,7 @@ namespace UI
             if (Input.GetKey(restartKey))
             {
                 Restart();
-            }
+            }*/
         }
 
         private void PauseGame()
