@@ -489,7 +489,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 22.5
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -516,7 +516,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.09, z: -6.89}
+  m_LocalPosition: {x: 0, y: 2.09, z: -19.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -657,13 +657,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.24843626, y: 0, z: 0, w: 0.9686483}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 66711528}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 28.77, y: 0, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3327,9 +3327,21 @@ PrefabInstance:
       propertyPath: side
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6157271288771120609, guid: 4f24f9a3858a4e04cb449972ce7daeb5, type: 3}
+      propertyPath: torque
+      value: 5.5e+12
+      objectReference: {fileID: 0}
     - target: {fileID: 6527011724633022894, guid: 4f24f9a3858a4e04cb449972ce7daeb5, type: 3}
       propertyPath: m_Name
       value: Paddle Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716893066448250566, guid: 4f24f9a3858a4e04cb449972ce7daeb5, type: 3}
+      propertyPath: m_Spring.damper
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716893066448250566, guid: 4f24f9a3858a4e04cb449972ce7daeb5, type: 3}
+      propertyPath: m_Spring.spring
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4384,9 +4396,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -17
       objectReference: {fileID: 0}
+    - target: {fileID: 6157271288771120609, guid: 4f24f9a3858a4e04cb449972ce7daeb5, type: 3}
+      propertyPath: torque
+      value: 5.5e+12
+      objectReference: {fileID: 0}
     - target: {fileID: 6527011724633022894, guid: 4f24f9a3858a4e04cb449972ce7daeb5, type: 3}
       propertyPath: m_Name
       value: Paddle Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716893066448250566, guid: 4f24f9a3858a4e04cb449972ce7daeb5, type: 3}
+      propertyPath: m_Spring.damper
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716893066448250566, guid: 4f24f9a3858a4e04cb449972ce7daeb5, type: 3}
+      propertyPath: m_Spring.spring
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

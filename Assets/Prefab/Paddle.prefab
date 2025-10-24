@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hingeJoint: {fileID: 8716893066448250566}
-  key: 334
   activatedPosition: 75
   originPosition: 0
+  torque: 300
+  side: 0

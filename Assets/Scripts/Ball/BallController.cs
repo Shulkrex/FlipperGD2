@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,6 +23,7 @@ namespace Ball
         [Header("Components")]
         [SerializeField] private Rigidbody rb;
         [SerializeField] private Collider coll;
+        [SerializeField] private Transform renderTr;
         
         private Coroutine _dashCoroutine;
         private float _initMass;
@@ -59,6 +61,7 @@ namespace Ball
             rb.mass = dashMass;
             coll.material = _initMaterial;
             
+            rb.AddForce(rb.linearVelocity.normalized * dashSpeed, ForceMode.VelocityChange);
             _dashCoroutine = StartCoroutine(DashCoroutine());
             
             onDash.Invoke();
@@ -66,6 +69,8 @@ namespace Ball
 
         private void RestoreAfterDash()
         {
+            _dashCoroutine = null;
+            
             rb.mass = _initMass;
             coll.material = _initMaterial;
         }
