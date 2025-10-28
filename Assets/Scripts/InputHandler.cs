@@ -8,6 +8,10 @@ public class InputHandler : MonoBehaviour
     public static readonly UnityEvent OnReleasePaddleL = new UnityEvent();
     public static readonly UnityEvent OnActivatePaddleR = new UnityEvent();
     public static readonly UnityEvent OnReleasePaddleR = new UnityEvent();
+    
+    public static readonly UnityEvent OnActivateShooter = new UnityEvent();
+    public static readonly UnityEvent OnReleaseShooter = new UnityEvent();
+    
     public static readonly UnityEvent OnBallDash = new UnityEvent();
     public static readonly UnityEvent OnMenu = new UnityEvent();
 
@@ -15,6 +19,7 @@ public class InputHandler : MonoBehaviour
 
     private void Update()
     {
+        // Paddle Gauche
         if (Input.GetKeyDown(inputs.paddleLKey))
         {
             OnActivatePaddleL.Invoke();
@@ -24,7 +29,8 @@ public class InputHandler : MonoBehaviour
             OnReleasePaddleL.Invoke();
         }
 
-        if (Input.GetKey(inputs.paddleRKey))
+        // Paddle Droite
+        if (Input.GetKeyDown(inputs.paddleRKey))
         {
             OnActivatePaddleR.Invoke();
         }
@@ -33,11 +39,23 @@ public class InputHandler : MonoBehaviour
             OnReleasePaddleR.Invoke();
         }
 
+        // Shooter
+        if (Input.GetKeyDown(inputs.shooterKey))
+        {
+            OnActivateShooter.Invoke();
+        }
+        else if (Input.GetKeyUp(inputs.shooterKey))
+        {
+            OnReleaseShooter.Invoke();
+        }
+        
+        // Dash
         if (Input.GetKeyDown(inputs.dashKey))
         {
             OnBallDash.Invoke();
         }
 
+        // Pause
         if (Input.GetKeyDown(inputs.menuKey))
         {
             OnMenu.Invoke();

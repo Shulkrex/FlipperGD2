@@ -7,7 +7,10 @@ namespace Object
         public new HingeJoint hingeJoint;
         public float activatedPosition = 75;
         public float originPosition = 0;
+        public float disabledPosition = 90;
 
+        public bool disabled = false;
+        
         private JointSpring _jointSpring;
         private float _targetPosition;
         protected bool activated;
@@ -27,7 +30,18 @@ namespace Object
 
         private void ChangeTargetPosition()
         {
+            if (disabled)
+            {
+                _targetPosition = disabledPosition;
+                return;
+            }
+            
             _targetPosition = activated ? activatedPosition : originPosition;
+        }
+
+        public void SetDisability(bool value)
+        {
+            disabled = value;
         }
     }
 }

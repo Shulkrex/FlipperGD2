@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6573724661908662624}
   - component: {fileID: 3604052671268892261}
-  - component: {fileID: 8069800129237582908}
+  - component: {fileID: 4506184709534157806}
   m_Layer: 0
   m_Name: Bumber
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 0.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7133111223327656282}
@@ -57,7 +57,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &8069800129237582908
+--- !u!114 &4506184709534157806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,10 +66,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4154534575445429874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841df99f82405c046860050b77d2ba90, type: 3}
+  m_Script: {fileID: 11500000, guid: ca071254e890428459865de6923b6c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 10
   scoreValue: 10
   onBump:
     m_PersistentCalls:
@@ -116,7 +116,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.61, y: 1.1, z: 0.61}
+  m_LocalScale: {x: 0.61, y: 1, z: 0.61}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6573724661908662624}

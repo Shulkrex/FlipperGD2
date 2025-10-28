@@ -35,18 +35,18 @@ public class GameManager : MonoBehaviour
         SpawnBall(ballDefaultSpawnPoint.position);
     }
     
-    public void SpawnBall(Vector3 position)
+    private void SpawnBall(Vector3 position)
     {
         _currentBall = Instantiate(ballPrefab, position, Quaternion.identity, transform);
         OnBallRespawn.Invoke();
     }
 
-    public void SpawnBallWithDelay()
+    private void SpawnBallWithDelay()
     {
         StartCoroutine(SpawnBallCoroutine());
     }
     
-    public IEnumerator SpawnBallCoroutine()
+    private IEnumerator SpawnBallCoroutine()
     {
         float respawnTimeLeft = _instance.ballRespawnDelay;
 
@@ -68,5 +68,10 @@ public class GameManager : MonoBehaviour
             return;
         
         _instance.SpawnBallWithDelay();
+    }
+
+    public static void SetSpawnPoint(Transform spawnPoint)
+    {
+        _instance.ballDefaultSpawnPoint = spawnPoint;
     }
 }
