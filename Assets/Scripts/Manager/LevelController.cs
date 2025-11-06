@@ -1,21 +1,24 @@
 using UnityEngine;
 using Object;
+using UnityEngine.Events;
 
 public class LevelController : MonoBehaviour
 {
+    [SerializeField] private VariableVector3 cameraPositionReference;
+    
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform cameraTransform;
     
     [SerializeField] private Paddle[] paddles;
     [SerializeField] private GameObject[] deathZones;
     
+    public UnityEvent onLevelStart = new UnityEvent();
+    public UnityEvent onLevelEnd = new UnityEvent();
+    
     public void InitLevel()
     {
         GameManager.SetSpawnPoint(spawnPoint);
-        if (Camera.main != null)
-        {
-            Camera.main.transform.position = cameraTransform.position;
-        }
+        cameraPositionReference.value = cameraTransform.position;
 
         foreach (Paddle paddle in paddles)
         {
@@ -26,6 +29,8 @@ public class LevelController : MonoBehaviour
         {
             deathZone.SetActive(true);
         }
+        
+        onLevelStart.Invoke();
     }
 
     public void DeactivateLevel()
@@ -39,5 +44,7 @@ public class LevelController : MonoBehaviour
         {
             deathZone.SetActive(false);
         }
+        
+        onLevelEnd.Invoke();
     }
 }

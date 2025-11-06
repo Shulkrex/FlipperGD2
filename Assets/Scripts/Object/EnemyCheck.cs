@@ -6,7 +6,7 @@ namespace Object
 {
     public class EnemyCheck : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> enemies = new List<GameObject>();
+        [SerializeField] private List<DestructibleObject> enemies = new List<DestructibleObject>();
         
         public UnityEvent onEmptyList = new UnityEvent();
 
@@ -14,10 +14,9 @@ namespace Object
         {
             foreach (var enemy in enemies)
             {
-                if (enemy.activeSelf) return;
+                if (!enemy.IsDestroyed) return;
             }
             
-            gameObject.SetActive(false);
             onEmptyList.Invoke();
         }
     }

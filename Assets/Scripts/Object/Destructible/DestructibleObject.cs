@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,8 +6,10 @@ namespace Object
 {
     public class DestructibleObject : MonoBehaviour
     {
+        [SerializeField] private DestrucibleObjectCatalogue catalogue;
+        [SerializeField] private DestructibleObjectData objectData;
+        
         [Header("Material")]
-        [SerializeField] private DestructibleObjectData materialData;
         [SerializeField] private MeshRenderer meshRenderer;
         [SerializeField] private GameObject invincibilityOverlay;
         
@@ -19,7 +22,16 @@ namespace Object
         [Space(15)]
         public UnityEvent onHit = new UnityEvent();
         public UnityEvent onFailedHit = new UnityEvent();
-        public UnityEvent onDestroy = new UnityEvent();
+        public UnityEvent onFinalHit = new UnityEvent();
+        
+        private bool _destroyed;
+        
+        public bool IsDestroyed => _destroyed;
+
+        private void Awake()
+        {
+            catalogue.AddDestructible(objectData, 1);
+        }
 
         private void OnEnable()
         {
@@ -48,7 +60,6 @@ namespace Object
             {
                 DestroyOnHit();
                 
-                onDestroy.Invoke();
                 return;
             }
             
@@ -58,12 +69,16 @@ namespace Object
 
         private void DestroyOnHit()
         {
+            _destroyed = true;
+            catalogue.AddDestructible(objectData, -1);
+            
+            onFinalHit.Invoke();
             gameObject.SetActive(false);
         }
 
         private void ChangeDisplay()
         {
-            meshRenderer.material = materialData.durabilityMaterials[_remainingHit - 1];
+            meshRenderer.material = objectData.durabilityMaterials[_remainingHit - 1];
         }
 
         public void SetInvisibility(bool invisibility)

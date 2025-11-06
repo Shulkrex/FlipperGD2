@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 606383132020301214}
   - component: {fileID: 7077905421288643932}
   - component: {fileID: 6440719516830573883}
+  - component: {fileID: 2113857359563520895}
   m_Layer: 0
   m_Name: Bumper Object
   m_TagString: Untagged
@@ -176,11 +177,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614863bc4a07e874a87dec692d718648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 10
-  scoreValue: 10
+  force: {fileID: 11400000, guid: 443ab301dc8e8064188c66983783a60b, type: 2}
+  scoreValue: {fileID: 11400000, guid: 806575fdd39e5fe4a97866b3b085f372, type: 2}
+  currentScore: {fileID: 11400000, guid: cfb1e5e8755b5b94797997295a0fc856, type: 2}
+  scoreDisplay: {fileID: 5028784246331051188, guid: d1783f40a26bb594ebdb887e2f955b3c, type: 3}
   onBump:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2113857359563520895}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2393851522500746911}
         m_TargetAssemblyTypeName: AnimationHandle.SingleAnimHandler, Assembly-CSharp
         m_MethodName: PlayAnimation
@@ -193,6 +208,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2113857359563520895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891180025320141533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6315bc7dc391eb64483cc87d2a02baa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableEventsCalled:
+  - {fileID: 11400000, guid: c5d67d1bff4cb8a44a11e4c3b24fd4c9, type: 2}
 --- !u!1 &6555355614934217832
 GameObject:
   m_ObjectHideFlags: 0

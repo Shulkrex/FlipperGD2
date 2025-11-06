@@ -6,22 +6,18 @@ namespace UI
 {
     public class UIScore : MonoBehaviour
     {
+        [SerializeField] private VariableInt currentScore;
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private int nbOfZero;
-
-        private void Awake()
-        {
-            ScoreManager.OnScoreChanged.AddListener(DisplayScore);
-        }
 
         private void Start()
         {
             scoreText.text = "00000";
         }
 
-        private void DisplayScore()
+        public void DisplayScore()
         {
-            string score = ("00000" + ScoreManager.Score);
+            string score = ("00000" + currentScore.value);
             //Debug.Log(score);
             //Debug.Log(score.Length - 5);
             //Debug.Log(score.Length - 1);

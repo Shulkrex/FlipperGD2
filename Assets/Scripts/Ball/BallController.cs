@@ -7,6 +7,8 @@ namespace Ball
 {
     public class BallController : MonoBehaviour
     {
+        [SerializeField] private VariableVector3 ballPosition;
+        
         [Header("Dash parameters")]
         [SerializeField] private float dashSpeed = 10f;
         [SerializeField] private float dashTime = 0.5f;
@@ -49,6 +51,11 @@ namespace Ball
         {
             _initMass = rb.mass;
             _initMaterial = coll.material;
+        }
+
+        private void Update()
+        {
+            ballPosition.value = transform.position;
         }
 
         private void Dash()

@@ -9,6 +9,8 @@ namespace Object
             Vector3 posDif = trBumped.position - transform.position;
             Vector3 projectedDirection = Vector3.ProjectOnPlane(posDif, transform.up).normalized;
             
+            
+            
             return projectedDirection;
         }
     }

@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 6519138082930240184}
   - component: {fileID: 1965437000816659474}
   - component: {fileID: 1438096521472932655}
+  - component: {fileID: 4897995973612429723}
   m_Layer: 0
   m_Name: Enemy rotate
   m_TagString: Untagged
@@ -175,10 +176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368e1d3dde68f7443a23690839ae8ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialData: {fileID: 11400000, guid: d2356d12bf40c71498c8cc5bf3121079, type: 2}
+  catalogue: {fileID: 11400000, guid: 82aafd746905f65499fd773476f8de3d, type: 2}
+  objectData: {fileID: 11400000, guid: d2356d12bf40c71498c8cc5bf3121079, type: 2}
   meshRenderer: {fileID: 3591626254576392307}
   invincibilityOverlay: {fileID: 0}
-  hitAmount: 2
+  hitAmount: 1
   defaultInvincibility: 0
   onHit:
     m_PersistentCalls:
@@ -186,9 +188,21 @@ MonoBehaviour:
   onFailedHit:
     m_PersistentCalls:
       m_Calls: []
-  onDestroy:
+  onFinalHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4897995973612429723}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1438096521472932655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,11 +215,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca071254e890428459865de6923b6c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
-  scoreValue: 30
+  force: {fileID: 11400000, guid: 443ab301dc8e8064188c66983783a60b, type: 2}
+  scoreValue: {fileID: 11400000, guid: 806575fdd39e5fe4a97866b3b085f372, type: 2}
+  currentScore: {fileID: 11400000, guid: cfb1e5e8755b5b94797997295a0fc856, type: 2}
+  scoreDisplay: {fileID: 5028784246331051188, guid: d1783f40a26bb594ebdb887e2f955b3c, type: 3}
   onBump:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4897995973612429723}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4897995973612429723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430551259786247963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6315bc7dc391eb64483cc87d2a02baa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableEventsCalled:
+  - {fileID: 11400000, guid: f2bdd5414d0091640bc16f8d66eee50f, type: 2}
+  - {fileID: 11400000, guid: c5d67d1bff4cb8a44a11e4c3b24fd4c9, type: 2}
 --- !u!1001 &4992130862346039171
 PrefabInstance:
   m_ObjectHideFlags: 0
