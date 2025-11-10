@@ -1212,7 +1212,7 @@ Transform:
   m_GameObject: {fileID: 3565068652944328758}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.47, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 6.14, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2004,7 +2004,7 @@ Transform:
   m_GameObject: {fileID: 6260688341277854138}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.22, z: 0}
+  m_LocalPosition: {x: 0, y: -3.11, z: 0}
   m_LocalScale: {x: 5.97, y: 5.31, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2043,7 +2043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c094351c5ff5f41a2d75effbc12797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {fileID: 11400000, guid: 2dd28718f351dc946a926efb4576f054, type: 2}
+  force: {fileID: 11400000, guid: 33cb81f13dd84694dbee318a046a9810, type: 2}
 --- !u!1 &6301115278183215608
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,6 +3078,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5052157045813746675, guid: 00765bae7efcdbc4bbcabb74d95e7a80, type: 3}
+      propertyPath: force
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a92cb36baaf82847a721a658f2a34aa, type: 2}
     - target: {fileID: 7192831297036738726, guid: 00765bae7efcdbc4bbcabb74d95e7a80, type: 3}
       propertyPath: m_Name
       value: Bumper Plane

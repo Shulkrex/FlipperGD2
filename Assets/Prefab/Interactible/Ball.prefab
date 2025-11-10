@@ -102,7 +102,6 @@ MonoBehaviour:
   dashTime: {fileID: 11400000, guid: 3367763dfaf086240b167469e2675e09, type: 2}
   dashCooldown: {fileID: 11400000, guid: 87c675357a386f3408c5e19110b1e1af, type: 2}
   dashStartUpTime: {fileID: 11400000, guid: 7c125cbeb06f0364c822a3b37b4aa09c, type: 2}
-  dashSlowDownTime: {fileID: 11400000, guid: b5feacb74ac2615409e01be99600f541, type: 2}
   dashSlowDownCurve:
     serializedVersion: 2
     m_Curve:

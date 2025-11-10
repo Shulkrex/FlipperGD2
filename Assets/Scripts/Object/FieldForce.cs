@@ -15,7 +15,7 @@ namespace Object
 
         private void FieldEffect(Rigidbody ball)
         {
-            ball.AddForce(transform.up * force);
+            ball.AddForce(transform.up * force, ForceMode.Force);
         }
     }
 }
