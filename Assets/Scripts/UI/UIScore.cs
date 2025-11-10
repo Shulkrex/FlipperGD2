@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using ScriptableVariable;
 
 namespace UI
 {
@@ -17,7 +18,7 @@ namespace UI
 
         public void DisplayScore()
         {
-            string score = ("00000" + currentScore.value);
+            string score = ("00000" + currentScore.Value);
             //Debug.Log(score);
             //Debug.Log(score.Length - 5);
             //Debug.Log(score.Length - 1);

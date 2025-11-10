@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using ScriptableVariable;
 
 namespace Ball
 {
@@ -10,9 +10,12 @@ namespace Ball
         [SerializeField] private VariableVector3 ballPosition;
         
         [Header("Dash parameters")]
-        [SerializeField] private float dashSpeed = 10f;
-        [SerializeField] private float dashTime = 0.5f;
-        [SerializeField] private float dashCooldown = 1f;
+        [SerializeField] private VariableFloat dashForce;
+        [SerializeField] private VariableFloat dashTime;
+        [SerializeField] private VariableFloat dashCooldown;
+        [Space(5)]
+        [SerializeField] private VariableFloat dashStartUpTime;
+        [SerializeField] private AnimationCurve dashSlowDownCurve; 
         
         [Header("Dash physic")]
         [SerializeField] private PhysicsMaterial dashMaterial;
@@ -27,22 +30,27 @@ namespace Ball
         [SerializeField] private Collider coll;
         [SerializeField] private Transform renderTr;
         
-        private Coroutine _dashCoroutine;
+        private bool _canDash = true;
+
+        public bool CanDash
+        {
+            get => _canDash;
+            set => _canDash = value;
+        }
+        
+        private Coroutine _dashPhysicsCoroutine;
+        private Coroutine _dashStartUpCoroutine;
+        private Coroutine _dashCooldownCoroutine;
+        
         private float _initMass;
         private PhysicsMaterial _initMaterial;
-
-        private void OnEnable()
-        {
-            InputHandler.OnBallDash.AddListener(Dash);
-        }
+        private Vector3 _dashVelocity;
 
         private void OnDisable()
         {
-            InputHandler.OnBallDash.RemoveListener(Dash);
-
-            if (_dashCoroutine != null)
+            if (_dashPhysicsCoroutine != null)
             {
-                StopCoroutine(_dashCoroutine);
+                StopCoroutine(_dashPhysicsCoroutine);
                 RestoreAfterDash();
             }
         }
@@ -55,38 +63,91 @@ namespace Ball
 
         private void Update()
         {
-            ballPosition.value = transform.position;
+            ballPosition.Value = transform.position;
         }
 
-        private void Dash()
+        public void Dash()
         {
-            if (_dashCoroutine != null)
+            if (!_canDash || _dashPhysicsCoroutine != null)
             {
                 return;
             }
 
             rb.mass = dashMass;
             coll.material = _initMaterial;
+
+            _dashVelocity = rb.linearVelocity.normalized * dashForce;
             
-            rb.AddForce(rb.linearVelocity.normalized * dashSpeed, ForceMode.VelocityChange);
-            _dashCoroutine = StartCoroutine(DashCoroutine());
+            _dashPhysicsCoroutine = StartCoroutine(DashPhysicsCoroutine());
+            _dashStartUpCoroutine = StartCoroutine(DashStartUpCoroutine());
+            _dashCooldownCoroutine = StartCoroutine(DashCooldownCoroutine());
             
             onDash.Invoke();
         }
 
         private void RestoreAfterDash()
         {
-            _dashCoroutine = null;
+            _dashPhysicsCoroutine = null;
             
             rb.mass = _initMass;
             coll.material = _initMaterial;
         }
 
-        private IEnumerator DashCoroutine()
+        public void CancelDash(bool resetCooldown)
+        {
+            if (_dashPhysicsCoroutine != null)
+            {
+                StopCoroutine(_dashPhysicsCoroutine);
+                RestoreAfterDash();
+            }
+
+            if (_dashStartUpCoroutine != null)
+            {
+                StopCoroutine(_dashStartUpCoroutine);
+                Time.timeScale = 1f;
+                rb.isKinematic = false;
+            }
+
+            if (resetCooldown && _dashCooldownCoroutine != null)
+            {
+                StopCoroutine(_dashCooldownCoroutine);
+                _canDash = true;
+            }
+        }
+
+        private IEnumerator DashStartUpCoroutine()
+        {
+            float timeLeft = dashStartUpTime;
+            rb.isKinematic = true;
+            
+            while (timeLeft > 0f)
+            {
+                timeLeft -= Time.unscaledDeltaTime;
+                yield return null;
+                
+                Time.timeScale = dashSlowDownCurve.Evaluate(1 - (timeLeft / dashStartUpTime));
+            }
+            
+            Time.timeScale = 1f;
+            
+            rb.isKinematic = false;
+            rb.AddForce(_dashVelocity, ForceMode.Impulse);
+        }
+
+        private IEnumerator DashPhysicsCoroutine()
         {
             yield return new WaitForSeconds(dashTime);
             
             RestoreAfterDash();
+        }
+
+        private IEnumerator DashCooldownCoroutine()
+        {
+            _canDash = false;
+            
+            yield return new WaitForSeconds(dashCooldown);
+            
+            _canDash = true;
         }
     }
 }

@@ -7,11 +7,6 @@ namespace Object
     {
         [SerializeField] private GameObject linkedGate;
 
-        private void Awake()
-        {
-            GameManager.OnBallRespawn.AddListener(OpenGate);
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             CloseGate();

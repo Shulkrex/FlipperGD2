@@ -1,43 +1,34 @@
 using UnityEngine;
 using UnityEngine.Events;
+using ScriptableVariable;
 
 namespace Object
 {
-    public abstract class Bumper : MonoBehaviour
+    public class Bumper : MonoBehaviour
     {
+        [Header("Stats")]
         [SerializeField] private VariableFloat force;
-        [SerializeField] private VariableInt scoreValue;
-        [SerializeField] private VariableInt currentScore;
-        [SerializeField] private GameObject scoreDisplay;
-        [SerializeField] private GameObject bumpParticulePrefab;
-        [SerializeField] GameObject bumpNormalParticulePrefab;
+        
+        [Header("Particles")]
+        [SerializeField] private GameObject bumpParticlePrefab;
+        [SerializeField] private GameObject bumpNormalParticlePrefab;
         
         public UnityEvent onBump;
     
         private void OnCollisionEnter(Collision other)
         {
-            Vector3 dir = GetBumperDirection(other.transform);
+            // Au final ça ne servait à rien d'avoir différents types de bumper
+            // La normal du contact suffit à corriger la différence de comportement
+            // entre un bumper circulaire et plat
+            Vector3 dir = -other.contacts[0].normal;
         
             Rigidbody ballRb = other.rigidbody;
-            ballRb.AddForce(dir * force.value,  ForceMode.Impulse);
-            Debug.DrawLine(transform.position, dir * force.value * 0.1f, Color.red, 0.5f);
+            ballRb.AddForce(dir * force.Value,  ForceMode.Impulse);
             
-            currentScore.value += scoreValue.value;
-            ScoreManager.OnScoreChanged.Invoke();
-
-            if (scoreDisplay != null)
-            {
-                Instantiate(scoreDisplay, transform.position + Vector3.back, Quaternion.identity);
-            }
+            Destroy( Instantiate(bumpParticlePrefab, transform.position , Quaternion.identity),5); 
+            Destroy( Instantiate(bumpNormalParticlePrefab, other.contacts[0].point , Quaternion.LookRotation(dir)),5);
             
             onBump.Invoke();
-            
-            
-            
-        Destroy(   Instantiate(bumpParticulePrefab, transform.position , Quaternion.identity),5); 
-        Destroy(   Instantiate(bumpNormalParticulePrefab, other.contacts[0].point , Quaternion.LookRotation(-other.contacts[0].normal)),5); 
         }
-
-        protected abstract Vector3 GetBumperDirection(Transform trBumped);
     }
 }

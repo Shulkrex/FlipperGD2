@@ -1,19 +1,20 @@
 using UnityEngine;
+using ScriptableVariable;
 
 namespace Object
 {
     public abstract class Paddle : MonoBehaviour
     {
         public new HingeJoint hingeJoint;
-        public float activatedPosition = 75;
-        public float originPosition = 0;
-        public float disabledPosition = 90;
+        public VariableFloat activatedPosition;
+        public VariableFloat originPosition;
+        public VariableFloat disabledPosition;
 
-        public bool disabled = false;
+        [HideInInspector] public bool disabled;
+        [HideInInspector] public bool activated;
         
         private JointSpring _jointSpring;
         private float _targetPosition;
-        protected bool activated;
 
         void Start()
         {
@@ -37,11 +38,6 @@ namespace Object
             }
             
             _targetPosition = activated ? activatedPosition : originPosition;
-        }
-
-        public void SetDisability(bool value)
-        {
-            disabled = value;
         }
     }
 }

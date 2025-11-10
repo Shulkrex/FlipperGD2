@@ -1,6 +1,7 @@
 using UnityEngine;
 using Object;
 using UnityEngine.Events;
+using ScriptableVariable;
 
 public class LevelController : MonoBehaviour
 {
@@ -17,8 +18,8 @@ public class LevelController : MonoBehaviour
     
     public void InitLevel()
     {
-        GameManager.SetSpawnPoint(spawnPoint);
-        cameraPositionReference.value = cameraTransform.position;
+        //GameManager.SetSpawnPoint(spawnPoint);
+        cameraPositionReference.Value = cameraTransform.position;
 
         foreach (Paddle paddle in paddles)
         {

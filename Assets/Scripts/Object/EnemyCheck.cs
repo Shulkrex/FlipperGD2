@@ -6,18 +6,13 @@ namespace Object
 {
     public class EnemyCheck : MonoBehaviour
     {
-        [SerializeField] private List<DestructibleObject> enemies = new List<DestructibleObject>();
+        [SerializeField] private DestrucibleObjectCatalogue objectCatalogue;
         
-        public UnityEvent onEmptyList = new UnityEvent();
+        public UnityEvent onAllObjectDestroyed = new UnityEvent();
 
         public void CheckList()
         {
-            foreach (var enemy in enemies)
-            {
-                if (!enemy.IsDestroyed) return;
-            }
-            
-            onEmptyList.Invoke();
+            if (objectCatalogue.IsEmpty) onAllObjectDestroyed.Invoke();
         }
     }
 }

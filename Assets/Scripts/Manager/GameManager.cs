@@ -1,77 +1,91 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using ScriptableVariable;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-    private static int _lifeCount = 0;
-    private static GameObject _currentBall;
-    
     [Header("Ball Info")]
-    public GameObject ballPrefab;
-    public Transform ballDefaultSpawnPoint;
+    [SerializeField] private GameObject ballPrefab;
+    [SerializeField] private VariableVector3 ballSpawnPoint;
     
-    [Header("Life and Delay")]
-    public int initialLifeCount = 3;
-    public float ballRespawnDelay = 1.0f;
+    [Header("Life")]
+    [SerializeField] private VariableInt initialLifeCount;
+    [SerializeField] private VariableInt leftLifeCount;
     
-    public static readonly UnityEvent OnBallRespawn = new UnityEvent();
+    [Header("Ball Return")]
+    [SerializeField] private VariableFloat returnTime;
+    [SerializeField] private AnimationCurve returnCurve;
+    
+    [Header("Slowdown")]
+    [SerializeField] private AnimationCurve slowdownCurve;
+    
+    [SerializeField] private UnityEvent onBallReturned;
+    [SerializeField] private UnityEvent onLastBallLost;
 
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-            return;
-        }
-        
-        Destroy(gameObject);
-    }
+    private GameObject _ball;
+    private Vector3 _ballDespawnPosition;
 
     private void Start()
     {
-        _lifeCount =  initialLifeCount;
-        SpawnBall(ballDefaultSpawnPoint.position);
-    }
-    
-    private void SpawnBall(Vector3 position)
-    {
-        _currentBall = Instantiate(ballPrefab, position, Quaternion.identity, transform);
-        OnBallRespawn.Invoke();
+        leftLifeCount =  initialLifeCount;
+        _ball = Instantiate(ballPrefab, ballSpawnPoint, Quaternion.identity);
     }
 
-    private void SpawnBallWithDelay()
+    public void LooseBall()
     {
-        StartCoroutine(SpawnBallCoroutine());
-    }
-    
-    private IEnumerator SpawnBallCoroutine()
-    {
-        float respawnTimeLeft = _instance.ballRespawnDelay;
-
-        while (respawnTimeLeft > 0)
+        if (leftLifeCount.Value <= 0)
         {
-            respawnTimeLeft -= Time.deltaTime;
-            yield return null;
+            onLastBallLost.Invoke();
         }
         
-        SpawnBall(ballDefaultSpawnPoint.position);
+        leftLifeCount.Value--;
+        
+        Slowdown();
+        ReturnBall();
     }
 
-    public static void LoseBall()
+    private void Slowdown()
     {
-        _lifeCount--;
-        Debug.Log($"Lives left : {_lifeCount}");
-        
-        if (_lifeCount < 0)
-            return;
-        
-        _instance.SpawnBallWithDelay();
+        StartCoroutine(SlowdownCoroutine());
     }
 
-    public static void SetSpawnPoint(Transform spawnPoint)
+    private IEnumerator SlowdownCoroutine()
     {
-        _instance.ballDefaultSpawnPoint = spawnPoint;
+        float timeLeft = returnTime;
+
+        while (timeLeft > 0f)
+        {
+            timeLeft -= Time.unscaledDeltaTime;
+            yield return null;
+            
+            Time.timeScale = slowdownCurve.Evaluate(1 - (timeLeft / returnTime));
+        }
+
+        Time.timeScale = 1f;
+    }
+
+    private void ReturnBall()
+    {
+        _ballDespawnPosition = _ball.transform.position;
+        StartCoroutine(ReturnBallCoroutine());
+    }
+
+    private IEnumerator ReturnBallCoroutine()
+    {
+        float timeLeft = returnTime;
+
+        while (timeLeft > 0f)
+        {
+            timeLeft -= Time.unscaledDeltaTime;
+            yield return null;
+            
+            _ball.transform.position = Vector3.Lerp(_ballDespawnPosition, ballSpawnPoint.Value,
+                returnCurve.Evaluate(1 - (timeLeft / returnTime)));
+        }
+        
+        _ball.transform.position = ballSpawnPoint.Value;
+        
+        onBallReturned.Invoke();
     }
 }

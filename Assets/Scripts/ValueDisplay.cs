@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using ScriptableVariable;
 
 public class ValueDisplay : MonoBehaviour
 {
@@ -8,6 +9,6 @@ public class ValueDisplay : MonoBehaviour
 
     private void Start()
     {
-        textLink.text = value.value.ToString();
+        textLink.text = value.Value.ToString();
     }
 }

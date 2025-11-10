@@ -1,22 +1,21 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using ScriptableVariable;
 
 namespace Object
 {
     public class FieldForce : MonoBehaviour
     {
-        public float force;
+        public VariableFloat force;
     
         private void OnTriggerStay(Collider other)
         {
-            FieldEffect(other.gameObject);
+            FieldEffect(other.attachedRigidbody);
         }
 
-        private void FieldEffect(GameObject ball)
+        private void FieldEffect(Rigidbody ball)
         {
-            Rigidbody ballRb = ball.GetComponent<Rigidbody>();
-        
-            ballRb.AddForce(transform.up * force);
+            ball.AddForce(transform.up * force);
         }
     }
 }

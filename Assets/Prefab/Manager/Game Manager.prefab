@@ -1,0 +1,193 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4695290110972591726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6545527896228694170}
+  - component: {fileID: 5881772463970969530}
+  - component: {fileID: -3610778099237862147}
+  - component: {fileID: -6360890316169019191}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6545527896228694170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695290110972591726}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5881772463970969530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695290110972591726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d17b03e97ba9b419367f0a6a70aaba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 4734135998656787607, guid: 5119d6337e197834b8fe20eea174f035, type: 3}
+  ballSpawnPoint: {fileID: 11400000, guid: 18bfa5abdc976ef428a24462aa033496, type: 2}
+  initialLifeCount: {fileID: 11400000, guid: be8dd619ab1b9b34b904c9239bd4d729, type: 2}
+  leftLifeCount: {fileID: 11400000, guid: 1708f811a6bd8b94f98a99a967eac368, type: 2}
+  returnTime: {fileID: 11400000, guid: c509bc899eccbf941923edb8e8499ef9, type: 2}
+  returnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 0
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0
+      inSlope: -0
+      outSlope: 1.872454
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  slowdownCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.00075149536
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0
+      inSlope: -10.075719
+      outSlope: 0.035091933
+      tangentMode: 5
+      weightedMode: 2
+      inWeight: 0.13088195
+      outWeight: 0.8546273
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 7.576843
+      outSlope: 7.576843
+      tangentMode: 0
+      weightedMode: 1
+      inWeight: 0.1094519
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  onBallReturned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6360890316169019191}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onLastBallLost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6360890316169019191}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-3610778099237862147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695290110972591726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ba9fc3ef19a4948a89b6964cf03731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventsListened:
+  - scriptableEvent: {fileID: 11400000, guid: 2c15a25969fe98344bfcf5796ff93034, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5881772463970969530}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: LooseBall
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &-6360890316169019191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695290110972591726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6315bc7dc391eb64483cc87d2a02baa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableEventsCalled:
+  - {fileID: 11400000, guid: 79c6c7fecde3f4b4194e326d1afeb200, type: 2}
+  - {fileID: 11400000, guid: 3d0092d705ab37a4f97212a531b46936, type: 2}

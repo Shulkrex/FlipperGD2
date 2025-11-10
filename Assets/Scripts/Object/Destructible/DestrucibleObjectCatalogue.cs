@@ -8,6 +8,19 @@ public class DestrucibleObjectCatalogue : ScriptableObject
 {
     public Dictionary<DestructibleObjectData, int> ObjectCatalogue = new Dictionary<DestructibleObjectData, int>();
 
+    public bool IsEmpty
+    {
+        get
+        {
+            foreach (var destructibleObjectData in ObjectCatalogue.Keys)
+            {
+                if (ObjectCatalogue[destructibleObjectData] > 0) return false;
+            }
+            
+            return true;
+        }
+    }
+    
     private void OnEnable()
     {
         ObjectCatalogue = new Dictionary<DestructibleObjectData, int>();
@@ -19,7 +32,5 @@ public class DestrucibleObjectCatalogue : ScriptableObject
         {
             ObjectCatalogue[data] = Math.Max(ObjectCatalogue[data] + amount, 0);
         }
-        
-        Debug.Log($"{data.name} : {ObjectCatalogue[data]}");
     }
 }

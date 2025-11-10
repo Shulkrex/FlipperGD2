@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2937406211512291049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6023513518766817537}
+  - component: {fileID: 1707460792345844370}
+  - component: {fileID: 2763398862831638876}
+  m_Layer: 0
+  m_Name: Input Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6023513518766817537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937406211512291049}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707460792345844370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937406211512291049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96099b3ac2d95774a8db52d32c53bc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputs: {fileID: 11400000, guid: 79491fe2a78032d48a6d2b73dde39341, type: 2}
+  onActivatePaddleL:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2763398862831638876}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onReleasePaddleL:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2763398862831638876}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onActivatePaddleR:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2763398862831638876}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onReleasePaddleR:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2763398862831638876}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onActivateShooter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2763398862831638876}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onReleaseShooter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2763398862831638876}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onBallDash:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2763398862831638876}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPause:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2763398862831638876}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2763398862831638876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937406211512291049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6315bc7dc391eb64483cc87d2a02baa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableEventsCalled:
+  - {fileID: 11400000, guid: f70f67a7f3f949143a25c22a48f717c0, type: 2}
+  - {fileID: 11400000, guid: ca9a62dc8f1dd92408bcd26a87a19d4e, type: 2}
+  - {fileID: 11400000, guid: 0f08b78eeffc3fb419973d2de7789ac6, type: 2}
+  - {fileID: 11400000, guid: 027cb36050480f841bc63269d8ff6834, type: 2}
+  - {fileID: 11400000, guid: a58db0c6346dfe649bfe0aefee766077, type: 2}
+  - {fileID: 11400000, guid: 8fdadf81cdf97e44a9dce75e38cdebb2, type: 2}
+  - {fileID: 11400000, guid: 2736e49a9e7f8124cabe87d44e02adc0, type: 2}
+  - {fileID: 11400000, guid: 5820460c80e9dc249be638420b70df26, type: 2}

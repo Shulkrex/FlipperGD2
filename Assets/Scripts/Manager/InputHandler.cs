@@ -4,61 +4,66 @@ using Data;
 
 public class InputHandler : MonoBehaviour
 {
-    public static readonly UnityEvent OnActivatePaddleL = new UnityEvent();
-    public static readonly UnityEvent OnReleasePaddleL = new UnityEvent();
-    public static readonly UnityEvent OnActivatePaddleR = new UnityEvent();
-    public static readonly UnityEvent OnReleasePaddleR = new UnityEvent();
-    
-    public static readonly UnityEvent OnActivateShooter = new UnityEvent();
-    public static readonly UnityEvent OnReleaseShooter = new UnityEvent();
-    
-    public static readonly UnityEvent OnBallDash = new UnityEvent();
-    public static readonly UnityEvent OnMenu = new UnityEvent();
-
     [SerializeField] private InputMapping inputs;
+    
+    [Header("Paddle")]
+    [SerializeField] private UnityEvent onActivatePaddleL = new UnityEvent();
+    [SerializeField] private UnityEvent onReleasePaddleL = new UnityEvent();
+    [SerializeField] private UnityEvent onActivatePaddleR = new UnityEvent();
+    [SerializeField] private UnityEvent onReleasePaddleR = new UnityEvent();
+    
+    [Header("Shooter")]
+    [SerializeField] private UnityEvent onActivateShooter = new UnityEvent();
+    [SerializeField] private UnityEvent onReleaseShooter = new UnityEvent();
+    
+    [Header("Ball")]
+    [SerializeField] private UnityEvent onBallDash = new UnityEvent();
+    
+    [Header("Menu")]
+    [SerializeField] private UnityEvent onPause = new UnityEvent();
 
     private void Update()
     {
         // Paddle Gauche
         if (Input.GetKeyDown(inputs.paddleLKey))
         {
-            OnActivatePaddleL.Invoke();
+            onActivatePaddleL.Invoke();
         }
         else if (Input.GetKeyUp(inputs.paddleLKey))
         {
-            OnReleasePaddleL.Invoke();
+            onReleasePaddleL.Invoke();
         }
 
         // Paddle Droite
         if (Input.GetKeyDown(inputs.paddleRKey))
         {
-            OnActivatePaddleR.Invoke();
+            onActivatePaddleR.Invoke();
         }
         else if (Input.GetKeyUp(inputs.paddleRKey))
         {
-            OnReleasePaddleR.Invoke();
+            onReleasePaddleR.Invoke();
         }
 
         // Shooter
         if (Input.GetKeyDown(inputs.shooterKey))
         {
-            OnActivateShooter.Invoke();
+            onActivateShooter.Invoke();
         }
         else if (Input.GetKeyUp(inputs.shooterKey))
         {
-            OnReleaseShooter.Invoke();
+            onReleaseShooter.Invoke();
         }
         
         // Dash
         if (Input.GetKeyDown(inputs.dashKey))
         {
-            OnBallDash.Invoke();
+            onBallDash.Invoke();
         }
 
         // Pause
         if (Input.GetKeyDown(inputs.menuKey))
         {
-            OnMenu.Invoke();
+            onPause.Invoke();
         }
     }
 }

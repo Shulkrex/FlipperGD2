@@ -14,18 +14,6 @@ namespace Object
         [SerializeField] private float unloadAccel;
 
         private ShooterState _state = ShooterState.Idle;
-        
-        private void OnEnable()
-        {
-            InputHandler.OnActivateShooter.AddListener(LoadShooter);
-            InputHandler.OnReleaseShooter.AddListener(UnloadShooter);
-        }
-
-        private void OnDisable()
-        {
-            InputHandler.OnActivateShooter.RemoveListener(LoadShooter);
-            InputHandler.OnReleaseShooter.RemoveListener(UnloadShooter);
-        }
 
         void FixedUpdate()
         {
@@ -67,13 +55,13 @@ namespace Object
             }
         }
         
-        private void LoadShooter()
+        public void LoadShooter()
         {
             if (!shooterRb.isKinematic) shooterRb.linearVelocity = Vector3.zero;
             _state = ShooterState.Loading;
         }
 
-        private void UnloadShooter()
+        public void UnloadShooter()
         {
             if (!shooterRb.isKinematic) shooterRb.linearVelocity = Vector3.zero;
             _state = ShooterState.Unloading;

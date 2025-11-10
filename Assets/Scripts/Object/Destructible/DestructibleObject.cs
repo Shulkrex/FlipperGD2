@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
+using ScriptableVariable;
 
 namespace Object
 {
@@ -14,9 +14,9 @@ namespace Object
         [SerializeField] private GameObject invincibilityOverlay;
         
         [Header("Stats")]
-        [SerializeField] private int hitAmount = 1;
+        [SerializeField] private VariableInt hitAmount;
         private int _remainingHit;
-        [SerializeField] private bool defaultInvincibility;
+        [SerializeField] private VariableBool defaultInvincibility;
         private bool _isInvincible;
         
         [Space(15)]
@@ -41,12 +41,7 @@ namespace Object
             SetInvisibility(defaultInvincibility);
         }
 
-        private void OnCollisionEnter(Collision other)
-        {
-            TakeHit();
-        }
-
-        private void TakeHit()
+        public void TakeHit()
         {
             if (_isInvincible)
             {
