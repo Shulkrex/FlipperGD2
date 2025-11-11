@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8264142971480999813}
   - component: {fileID: 4255822205629071510}
   m_Layer: 0
-  m_Name: Bumper Circular
+  m_Name: Bumper Circular Weak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,7 +10,7 @@ namespace Object
         public VariableFloat originPosition;
         public VariableFloat disabledPosition;
 
-        [HideInInspector] public bool disabled;
+        public bool disabled;
         [HideInInspector] public bool activated;
         
         private JointSpring _jointSpring;

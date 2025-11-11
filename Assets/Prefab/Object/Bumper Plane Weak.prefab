@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5052157045813746675}
   - component: {fileID: 3406501290826164484}
   m_Layer: 0
-  m_Name: Bumper Plane
+  m_Name: Bumper Plane Weak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

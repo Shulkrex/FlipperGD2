@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6940236763617784940
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4046673371721569589}
+    m_Modifications:
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8205076461330065541, guid: f16b54042173bf641a940e078dd97131, type: 3}
+      propertyPath: m_Name
+      value: Particle (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f16b54042173bf641a940e078dd97131, type: 3}
+--- !u!4 &7644755857599340532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 740574279548070808, guid: f16b54042173bf641a940e078dd97131, type: 3}
+  m_PrefabInstance: {fileID: 6940236763617784940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7138808207894740053
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4154534575445429874, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_Name
+      value: Bumper Circular Medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413072559134656384, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e4b25c3e0348a74d8997450ce63e6a2, type: 2}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264142971480999813, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: force
+      value: 
+      objectReference: {fileID: 11400000, guid: 763f0fad43e78bc40a488ca8e6a9cee9, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7644755857599340532}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+--- !u!4 &4046673371721569589 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6573724661908662624, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+  m_PrefabInstance: {fileID: 7138808207894740053}
+  m_PrefabAsset: {fileID: 0}
