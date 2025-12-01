@@ -44,7 +44,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4734135998656787607}
-  m_Material: {fileID: 13400000, guid: dc8a8f9b1e885c04bb770444cd243cb9, type: 2}
+  m_Material: {fileID: 13400000, guid: 503fef4f5a7de78409994ef2c0266799, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dashMaterial: {fileID: 13400000, guid: 5f30abde9e2d924438f7ff16ac87b38b, type: 2}
+  dashMaterial: {fileID: 13400000, guid: c85a8a327767c064c95bc901af3009a0, type: 2}
   dashMass: 0.25
   onDash:
     m_PersistentCalls:

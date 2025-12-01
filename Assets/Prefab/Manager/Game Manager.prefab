@@ -117,6 +117,21 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  onGameStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6360890316169019191}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onBallReturned:
     m_PersistentCalls:
       m_Calls:
@@ -160,6 +175,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventsListened:
+  - scriptableEvent: {fileID: 11400000, guid: 623298cf4f139e54babdf42bd1f388a9, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5881772463970969530}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: StartGame
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - scriptableEvent: {fileID: 11400000, guid: 2c15a25969fe98344bfcf5796ff93034, type: 2}
     onCalled:
       m_PersistentCalls:
@@ -191,3 +222,4 @@ MonoBehaviour:
   scriptableEventsCalled:
   - {fileID: 11400000, guid: 79c6c7fecde3f4b4194e326d1afeb200, type: 2}
   - {fileID: 11400000, guid: 3d0092d705ab37a4f97212a531b46936, type: 2}
+  - {fileID: 11400000, guid: b6dd53c1d374a434fba8e44d9d92888f, type: 2}

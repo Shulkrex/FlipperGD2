@@ -20,16 +20,19 @@ public class GameManager : MonoBehaviour
     [Header("Slowdown")]
     [SerializeField] private AnimationCurve slowdownCurve;
     
+    [SerializeField] private UnityEvent onGameStart;
     [SerializeField] private UnityEvent onBallReturned;
     [SerializeField] private UnityEvent onLastBallLost;
 
     private GameObject _ball;
     private Vector3 _ballDespawnPosition;
 
-    private void Start()
+    public void StartGame()
     {
         leftLifeCount =  initialLifeCount;
         _ball = Instantiate(ballPrefab, ballSpawnPoint, Quaternion.identity);
+        
+        onGameStart.Invoke();
     }
 
     public void LooseBall()
