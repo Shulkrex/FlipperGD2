@@ -144,8 +144,45 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  rb: {fileID: 2714959029835339961}
+  coll: {fileID: 3151764381182420006}
   dashMaterial: {fileID: 13400000, guid: c85a8a327767c064c95bc901af3009a0, type: 2}
   dashMass: 0.25
+  renderTr: {fileID: 2329414117117430624}
+  trail: {fileID: 4621031926143292640}
+  speedGradient:
+    serializedVersion: 2
+    key0: {r: 0, g: 0.49408722, b: 1, a: 1}
+    key1: {r: 0, g: 1, b: 0.008930683, a: 1}
+    key2: {r: 0.9827944, g: 1, b: 0, a: 0}
+    key3: {r: 0.9137255, g: 0.5371062, b: 0.254902, a: 0}
+    key4: {r: 1, g: 0, b: 0.24940443, a: 0}
+    key5: {r: 0.60403156, g: 0, b: 1, a: 0}
+    key6: {r: 0.60403156, g: 0, b: 1, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 12914
+    ctime2: 27756
+    ctime3: 41056
+    ctime4: 54356
+    ctime5: 65535
+    ctime6: 65535
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 2
+    m_ColorSpace: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  speedGradientMax: 15
+  speedGradientSampleCount: 5
+  speedGradientSampleInterval: 0.2
   onDash:
     m_PersistentCalls:
       m_Calls:
@@ -161,9 +198,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  rb: {fileID: 2714959029835339961}
-  coll: {fileID: 3151764381182420006}
-  renderTr: {fileID: 2329414117117430624}
 --- !u!114 &-1342594140092474975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +319,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 52f6a2a7643314c419679a58d4dfd39b, type: 2}
+  - {fileID: 2100000, guid: 0d1e3172b67d38f4f8cd51c3b4155d76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -362,7 +396,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

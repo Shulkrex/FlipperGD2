@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using ScriptableVariable;
 
@@ -7,7 +8,7 @@ public class UILife : MonoBehaviour
     [SerializeField] private VariableInt lifeCountCurrent;
     [SerializeField] private GameObject uiLifeUnit;
     
-    private GameObject[] _lives;
+    private GameObject[] _lives = Array.Empty<GameObject>();
     
     public void SetUpDisplay()
     {
@@ -25,7 +26,7 @@ public class UILife : MonoBehaviour
 
     public void ResetDisplay()
     {
-        for (int i = lifeCountDefault.Value; i >= 0; i--)
+        for (int i = _lives.Length - 1; i >= 0; i--)
         {
             Destroy(_lives[i]);
         }

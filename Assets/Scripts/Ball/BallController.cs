@@ -14,21 +14,30 @@ namespace Ball
         [SerializeField] private VariableFloat dashTime;
         [SerializeField] private VariableFloat dashCooldown;
         [Space(5)]
+        
         [SerializeField] private VariableFloat dashStartUpTime;
         [SerializeField] private AnimationCurve dashSlowDownCurve; 
         
         [Header("Dash physic")]
+        [SerializeField] private Rigidbody rb;
+        [SerializeField] private Collider coll;
         [SerializeField] private PhysicsMaterial dashMaterial;
         [SerializeField] private float dashMass = 1f;
+        
+        [Header("Render")]
+        [SerializeField] private Transform renderTr;
+        [SerializeField] private TrailRenderer trail;
+        [SerializeField] private Gradient speedGradient;
+        [SerializeField] private float speedGradientMax;
+        [SerializeField] private int speedGradientSampleCount;
+        [SerializeField] private float speedGradientSampleInterval;
+        private readonly Gradient _trailGradient = new Gradient();
+        private readonly GradientAlphaKey[] _alphaKeys = new GradientAlphaKey[2];
+        private GradientColorKey[] _colorKeys;
 
         [Space(10)]
         public UnityEvent onDash = new UnityEvent();
         [Space(10)]
-        
-        [Header("Components")]
-        [SerializeField] private Rigidbody rb;
-        [SerializeField] private Collider coll;
-        [SerializeField] private Transform renderTr;
         
         private bool _canDash = true;
 
@@ -59,11 +68,41 @@ namespace Ball
         {
             _initMass = rb.mass;
             _initMaterial = coll.material;
+            
+            _colorKeys = new GradientColorKey[speedGradientSampleCount];
+            for (int i = 0; i < _colorKeys.Length; i++)
+            {
+                _colorKeys[i] = new GradientColorKey(Color.white, (float) i / (speedGradientSampleCount - 1));
+            }
+            
+            _alphaKeys[0] = new GradientAlphaKey(1f, 0f);
+            _alphaKeys[1] = new GradientAlphaKey(1f, 1f);
+            
+            _trailGradient.SetKeys(_colorKeys, _alphaKeys);
+            trail.colorGradient = _trailGradient;
+            StartCoroutine(GradientChangeCoroutine());
         }
 
         private void Update()
         {
             ballPosition.Value = transform.position;
+        }
+
+        private IEnumerator GradientChangeCoroutine()
+        {
+            while (true)
+            {
+                for (int i = 0; i < _colorKeys.Length - 1; i++)
+                {
+                    _colorKeys[i] = new GradientColorKey(_trailGradient.colorKeys[i + 1].color, (float) i / (speedGradientSampleCount - 1));
+                }
+
+                _colorKeys[^1] = new GradientColorKey(speedGradient.Evaluate(rb.linearVelocity.magnitude / speedGradientMax), 1f);
+                _trailGradient.SetKeys(_colorKeys, _alphaKeys);
+                trail.colorGradient = _trailGradient;
+            
+                yield return new WaitForSeconds(speedGradientSampleInterval);
+            }
         }
 
         public void Dash()
