@@ -326,6 +326,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - scriptableEvent: {fileID: 11400000, guid: 6632a325ebae69642845636a07e32e20, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3896923248068894209}
+          m_TargetAssemblyTypeName: Ball.BallController, Assembly-CSharp
+          m_MethodName: set_CanDash
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - scriptableEvent: {fileID: 11400000, guid: 081cbff780b21334b98b0af7c1f491ef, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3896923248068894209}
+          m_TargetAssemblyTypeName: Ball.BallController, Assembly-CSharp
+          m_MethodName: set_CanDash
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!96 &4621031926143292640
 TrailRenderer:
   serializedVersion: 3

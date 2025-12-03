@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private UnityEvent onGameStart;
     [SerializeField] private UnityEvent onGamePause;
+    [SerializeField] private UnityEvent onGameResume;
     [SerializeField] private UnityEvent onGameOver;
     [SerializeField] private UnityEvent onGameVictory;
     [SerializeField] private UnityEvent onBallReturned;
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject _ball;
     private Vector3 _ballDespawnPosition;
+    private bool _inMenu = true;
+    private bool _gamePaused;
 
     private void Start()
     {
@@ -40,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        _inMenu = false;
+        
         Time.timeScale = 1f;
         leftLifeCount.Value =  initialLifeCount.Value;
         _ball = Instantiate(ballPrefab, ballSpawnPoint, Quaternion.identity);
@@ -49,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     public void EndGame(bool victory)
     {
+        _inMenu = true;
+        
         Time.timeScale = 0f;
         _ball = null;
         
@@ -56,9 +63,32 @@ public class GameManager : MonoBehaviour
         else onGameOver.Invoke();
     }
 
+    public void PauseGame()
+    {
+        if (_inMenu) return;
+        
+        if (!_gamePaused)
+        {
+            _gamePaused = true;
+            Time.timeScale = 0f;
+            onGamePause.Invoke();
+        }
+        else
+        {
+            _gamePaused = false;
+            Time.timeScale = 1f;
+            onGameResume.Invoke();
+        }
+    }
+
     public void Reload()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     public void LooseBall()

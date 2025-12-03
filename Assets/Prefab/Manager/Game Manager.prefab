@@ -122,7 +122,34 @@ MonoBehaviour:
       m_Calls: []
   onGamePause:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -6360890316169019191}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onGameResume:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6360890316169019191}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onGameOver:
     m_PersistentCalls:
       m_Calls:
@@ -283,6 +310,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - scriptableEvent: {fileID: 11400000, guid: 5820460c80e9dc249be638420b70df26, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5881772463970969530}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: PauseGame
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - scriptableEvent: {fileID: 11400000, guid: 63dd103a734c5b44bb8f28328bd54b4b, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5881772463970969530}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: Quit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &-6360890316169019191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,3 +362,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec29b174eace48d449abeef3ff36456f, type: 2}
   - {fileID: 11400000, guid: 8483635265ef7ff49b780342ab4f6f18, type: 2}
   - {fileID: 11400000, guid: 640d0d23c9e229a4dbe407ba16abd7cf, type: 2}
+  - {fileID: 11400000, guid: 6632a325ebae69642845636a07e32e20, type: 2}
+  - {fileID: 11400000, guid: 081cbff780b21334b98b0af7c1f491ef, type: 2}
