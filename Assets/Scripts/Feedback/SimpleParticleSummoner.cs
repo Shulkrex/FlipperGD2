@@ -8,7 +8,7 @@ public class SimpleParticleSummoner : MonoBehaviour
     {
         foreach (GameObject particleEmitter in particleEmitters)
         {
-            Destroy(Instantiate(particleEmitter, transform.position, Quaternion.identity), 5);
+            Destroy(Instantiate(particleEmitter, transform.position, transform.rotation), 5);
         }
     }
 }

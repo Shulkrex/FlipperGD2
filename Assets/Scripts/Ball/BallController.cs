@@ -29,11 +29,9 @@ namespace Ball
         [SerializeField] private TrailRenderer trail;
         [SerializeField] private Gradient speedGradient;
         [SerializeField] private float speedGradientMax;
-        [SerializeField] private int speedGradientSampleCount;
-        [SerializeField] private float speedGradientSampleInterval;
         private readonly Gradient _trailGradient = new Gradient();
         private readonly GradientAlphaKey[] _alphaKeys = new GradientAlphaKey[2];
-        private GradientColorKey[] _colorKeys;
+        private readonly GradientColorKey[] _colorKeys = new GradientColorKey[1];
 
         [Space(10)]
         public UnityEvent onDash = new UnityEvent();
@@ -69,40 +67,22 @@ namespace Ball
             _initMass = rb.mass;
             _initMaterial = coll.material;
             
-            _colorKeys = new GradientColorKey[speedGradientSampleCount];
-            for (int i = 0; i < _colorKeys.Length; i++)
-            {
-                _colorKeys[i] = new GradientColorKey(Color.white, (float) i / (speedGradientSampleCount - 1));
-            }
-            
             _alphaKeys[0] = new GradientAlphaKey(1f, 0f);
             _alphaKeys[1] = new GradientAlphaKey(1f, 1f);
             
+            _colorKeys[0] = new GradientColorKey(Color.white, 1f);
+            
             _trailGradient.SetKeys(_colorKeys, _alphaKeys);
             trail.colorGradient = _trailGradient;
-            StartCoroutine(GradientChangeCoroutine());
         }
 
         private void Update()
         {
             ballPosition.Value = transform.position;
-        }
-
-        private IEnumerator GradientChangeCoroutine()
-        {
-            while (true)
-            {
-                for (int i = 0; i < _colorKeys.Length - 1; i++)
-                {
-                    _colorKeys[i] = new GradientColorKey(_trailGradient.colorKeys[i + 1].color, (float) i / (speedGradientSampleCount - 1));
-                }
-
-                _colorKeys[^1] = new GradientColorKey(speedGradient.Evaluate(rb.linearVelocity.magnitude / speedGradientMax), 1f);
-                _trailGradient.SetKeys(_colorKeys, _alphaKeys);
-                trail.colorGradient = _trailGradient;
             
-                yield return new WaitForSeconds(speedGradientSampleInterval);
-            }
+            _colorKeys[0] = new GradientColorKey(speedGradient.Evaluate(rb.linearVelocity.magnitude / speedGradientMax), 1f);
+            _trailGradient.SetKeys(_colorKeys, _alphaKeys);
+            trail.colorGradient = _trailGradient;
         }
 
         public void Dash()
@@ -115,7 +95,7 @@ namespace Ball
             rb.mass = dashMass;
             coll.material = _initMaterial;
 
-            _dashVelocity = rb.linearVelocity.normalized * dashForce;
+            _dashVelocity = Vector3.ProjectOnPlane(rb.linearVelocity, Vector3.forward).normalized * dashForce;
             
             _dashPhysicsCoroutine = StartCoroutine(DashPhysicsCoroutine());
             _dashStartUpCoroutine = StartCoroutine(DashStartUpCoroutine());

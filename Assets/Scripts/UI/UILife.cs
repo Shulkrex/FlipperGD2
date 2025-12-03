@@ -9,7 +9,12 @@ public class UILife : MonoBehaviour
     [SerializeField] private GameObject uiLifeUnit;
     
     private GameObject[] _lives = Array.Empty<GameObject>();
-    
+
+    private void OnEnable()
+    {
+        SetUpDisplay();
+    }
+
     public void SetUpDisplay()
     {
         ResetDisplay();
@@ -29,6 +34,14 @@ public class UILife : MonoBehaviour
         for (int i = _lives.Length - 1; i >= 0; i--)
         {
             Destroy(_lives[i]);
+        }
+    }
+
+    public void UpdateDisplay()
+    {
+        for (int i = lifeCountDefault.Value - 1; i > lifeCountCurrent.Value - 1; i--)
+        {
+            _lives[i].transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 }

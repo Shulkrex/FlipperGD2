@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using ScriptableVariable;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,31 +23,59 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AnimationCurve slowdownCurve;
     
     [SerializeField] private UnityEvent onGameStart;
+    [SerializeField] private UnityEvent onGamePause;
+    [SerializeField] private UnityEvent onGameOver;
+    [SerializeField] private UnityEvent onGameVictory;
     [SerializeField] private UnityEvent onBallReturned;
+    [SerializeField] private UnityEvent onBallLost;
     [SerializeField] private UnityEvent onLastBallLost;
 
     private GameObject _ball;
     private Vector3 _ballDespawnPosition;
 
+    private void Start()
+    {
+        Time.timeScale = 0f;
+    }
+
     public void StartGame()
     {
-        leftLifeCount =  initialLifeCount;
+        Time.timeScale = 1f;
+        leftLifeCount.Value =  initialLifeCount.Value;
         _ball = Instantiate(ballPrefab, ballSpawnPoint, Quaternion.identity);
         
         onGameStart.Invoke();
     }
 
+    public void EndGame(bool victory)
+    {
+        Time.timeScale = 0f;
+        _ball = null;
+        
+        if (victory) onGameVictory.Invoke();
+        else onGameOver.Invoke();
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void LooseBall()
     {
+        leftLifeCount.Value--;
+        
         if (leftLifeCount.Value <= 0)
         {
             onLastBallLost.Invoke();
+            EndGame(false);
+            return;
         }
-        
-        leftLifeCount.Value--;
         
         Slowdown();
         ReturnBall();
+        
+        onBallLost.Invoke();
     }
 
     private void Slowdown()

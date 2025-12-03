@@ -16,9 +16,9 @@ public class ScriptableEvent : ScriptableObject
 
     public void Invoke()
     {
-        foreach (EventSubscription listener in listeners)
+        for (int i = listeners.Count - 1; i >= 0; i--)
         {
-            listener.onCalled.Invoke();;
+            listeners[i].onCalled.Invoke();
         }
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4213665898694791141}
   - component: {fileID: 5776563111263866663}
   - component: {fileID: 5052157045813746675}
+  - component: {fileID: -2587520849996106448}
   - component: {fileID: 3406501290826164484}
   m_Layer: 0
   m_Name: Bumper Plane Weak
@@ -68,24 +69,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841df99f82405c046860050b77d2ba90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 10
   force: {fileID: 11400000, guid: 443ab301dc8e8064188c66983783a60b, type: 2}
   bumpParticlePrefab: {fileID: 3449915671516753022, guid: a594cb335bc5b3446ad2bfec83d7e5a2, type: 3}
   bumpNormalParticlePrefab: {fileID: 3449915671516753022, guid: ea65ef721c24cd341abf2b52017593b8, type: 3}
   onBump:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3406501290826164484}
-        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
-        m_MethodName: CallEvent
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1381223787404840164}
         m_TargetAssemblyTypeName: AnimationHandle.SingleAnimHandler, Assembly-CSharp
         m_MethodName: PlayAnimation
@@ -98,6 +88,57 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3406501290826164484}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -2587520849996106448}
+        m_TargetAssemblyTypeName: ScoreAdder, Assembly-CSharp
+        m_MethodName: AddScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3406501290826164484}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-2587520849996106448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192831297036738726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7990888decbe2b84bab945fe269ead61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScore: {fileID: 11400000, guid: cfb1e5e8755b5b94797997295a0fc856, type: 2}
+  additionalScore: {fileID: 11400000, guid: 806575fdd39e5fe4a97866b3b085f372, type: 2}
+  display: {fileID: 5028784246331051188, guid: d1783f40a26bb594ebdb887e2f955b3c, type: 3}
 --- !u!114 &3406501290826164484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptableEventsCalled:
   - {fileID: 11400000, guid: c5d67d1bff4cb8a44a11e4c3b24fd4c9, type: 2}
+  - {fileID: 11400000, guid: 9a2519f5945a0ea4ab6ec759a68e4c8d, type: 2}
 --- !u!1 &7560120742382052883
 GameObject:
   m_ObjectHideFlags: 0

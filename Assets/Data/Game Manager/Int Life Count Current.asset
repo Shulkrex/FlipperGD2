@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Int Life Count Current
   m_EditorClassIdentifier: 
   value: 5
-  editedValue: 1
+  editedValue: 5

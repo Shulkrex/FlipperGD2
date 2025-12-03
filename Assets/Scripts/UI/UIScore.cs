@@ -11,19 +11,18 @@ namespace UI
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private int nbOfZero;
 
-        private void Start()
+        private void OnEnable()
         {
-            scoreText.text = "00000";
+            DisplayScore();
         }
 
         public void DisplayScore()
         {
-            string score = ("00000" + currentScore.Value);
-            //Debug.Log(score);
-            //Debug.Log(score.Length - 5);
-            //Debug.Log(score.Length - 1);
-            //string truncateScore = score.Substring(score.Length - 5, score.Length - 1);
-            scoreText.text = score;
+            scoreText.text = currentScore.Value.ToString();
+            while (scoreText.text.Length < nbOfZero)
+            {
+                scoreText.text = "0" + scoreText.text;
+            }
         }
     }
 }

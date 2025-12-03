@@ -16,6 +16,12 @@ namespace Object
         private JointSpring _jointSpring;
         private float _targetPosition;
 
+        public bool Disabled
+        {
+            get => disabled;
+            set => disabled = value;
+        }
+        
         void Start()
         {
             _jointSpring = hingeJoint.spring;

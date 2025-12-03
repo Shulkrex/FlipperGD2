@@ -66,13 +66,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventsListened:
-  - scriptableEvent: {fileID: 11400000, guid: 623298cf4f139e54babdf42bd1f388a9, type: 2}
+  - scriptableEvent: {fileID: 11400000, guid: e4032c208b990b74dbd52411dd183423, type: 2}
     onCalled:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1660236369805797762}
           m_TargetAssemblyTypeName: UILife, Assembly-CSharp
-          m_MethodName: SetUpDisplay
+          m_MethodName: UpdateDisplay
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - scriptableEvent: {fileID: 11400000, guid: 3d0092d705ab37a4f97212a531b46936, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1660236369805797762}
+          m_TargetAssemblyTypeName: UILife, Assembly-CSharp
+          m_MethodName: ResetDisplay
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

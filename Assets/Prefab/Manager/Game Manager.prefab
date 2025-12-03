@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 4734135998656787607, guid: 5119d6337e197834b8fe20eea174f035, type: 3}
   ballSpawnPoint: {fileID: 11400000, guid: 18bfa5abdc976ef428a24462aa033496, type: 2}
-  initialLifeCount: {fileID: 11400000, guid: be8dd619ab1b9b34b904c9239bd4d729, type: 2}
-  leftLifeCount: {fileID: 11400000, guid: 1708f811a6bd8b94f98a99a967eac368, type: 2}
+  initialLifeCount: {fileID: 11400000, guid: 1708f811a6bd8b94f98a99a967eac368, type: 2}
+  leftLifeCount: {fileID: 11400000, guid: be8dd619ab1b9b34b904c9239bd4d729, type: 2}
   returnTime: {fileID: 11400000, guid: c509bc899eccbf941923edb8e8499ef9, type: 2}
   returnCurve:
     serializedVersion: 2
@@ -119,6 +119,12 @@ MonoBehaviour:
     m_RotationOrder: 4
   onGameStart:
     m_PersistentCalls:
+      m_Calls: []
+  onGamePause:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameOver:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -6360890316169019191}
         m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
@@ -127,7 +133,46 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -6360890316169019191}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onGameVictory:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6360890316169019191}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -6360890316169019191}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -143,6 +188,21 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onBallLost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6360890316169019191}
+        m_TargetAssemblyTypeName: ScriptableEventInvoker, Assembly-CSharp
+        m_MethodName: CallEvent
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -207,6 +267,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - scriptableEvent: {fileID: 11400000, guid: b8a939ea181aeba49a362bedf93705a6, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5881772463970969530}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: Reload
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &-6360890316169019191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,3 +299,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 79c6c7fecde3f4b4194e326d1afeb200, type: 2}
   - {fileID: 11400000, guid: 3d0092d705ab37a4f97212a531b46936, type: 2}
   - {fileID: 11400000, guid: b6dd53c1d374a434fba8e44d9d92888f, type: 2}
+  - {fileID: 11400000, guid: e4032c208b990b74dbd52411dd183423, type: 2}
+  - {fileID: 11400000, guid: ec29b174eace48d449abeef3ff36456f, type: 2}
+  - {fileID: 11400000, guid: 8483635265ef7ff49b780342ab4f6f18, type: 2}
+  - {fileID: 11400000, guid: 640d0d23c9e229a4dbe407ba16abd7cf, type: 2}

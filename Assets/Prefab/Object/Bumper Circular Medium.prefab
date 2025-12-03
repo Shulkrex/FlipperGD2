@@ -70,6 +70,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -465728620944037998, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: additionalScore
+      value: 
+      objectReference: {fileID: 11400000, guid: 8595766192d90f948803a19608503d1d, type: 2}
     - target: {fileID: 4154534575445429874, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
       propertyPath: m_Name
       value: Bumper Circular Medium
@@ -122,6 +126,10 @@ PrefabInstance:
       propertyPath: force
       value: 
       objectReference: {fileID: 11400000, guid: 763f0fad43e78bc40a488ca8e6a9cee9, type: 2}
+    - target: {fileID: 8264142971480999813, guid: ca4bfadd72ab1924482b480c3a41399d, type: 3}
+      propertyPath: scoreValue
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

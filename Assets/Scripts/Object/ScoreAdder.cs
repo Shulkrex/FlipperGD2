@@ -1,5 +1,6 @@
 using UnityEngine;
 using ScriptableVariable;
+using TMPro;
 
 public class ScoreAdder : MonoBehaviour
 {
@@ -14,9 +15,8 @@ public class ScoreAdder : MonoBehaviour
     {
         currentScore.Value += additionalScore;
         
-        Instantiate(display, transform.position + Vector3.back, Quaternion.identity);
-        
-        // à retirer
-        ScoreManager.OnScoreChanged.Invoke();
+        GameObject scoreFeedback = Instantiate(display, transform.position + Vector3.back, Quaternion.identity);
+        TextMeshPro scoreText = scoreFeedback.GetComponent<TextMeshPro>();
+        scoreText.text = additionalScore.Value.ToString();
     }
 }

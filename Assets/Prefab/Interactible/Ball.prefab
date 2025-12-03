@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3896923248068894209}
   - component: {fileID: -1342594140092474975}
   - component: {fileID: 4621031926143292640}
+  - component: {fileID: 706875558235696467}
   m_Layer: 3
   m_Name: Ball
   m_TagString: Untagged
@@ -82,7 +83,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!114 &3896923248068894209
@@ -181,8 +182,6 @@ MonoBehaviour:
     m_NumColorKeys: 6
     m_NumAlphaKeys: 2
   speedGradientMax: 15
-  speedGradientSampleCount: 5
-  speedGradientSampleInterval: 0.2
   onDash:
     m_PersistentCalls:
       m_Calls:
@@ -294,6 +293,38 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+  - scriptableEvent: {fileID: 11400000, guid: 3d0092d705ab37a4f97212a531b46936, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 706875558235696467}
+          m_TargetAssemblyTypeName: AutoDestroy, Assembly-CSharp
+          m_MethodName: SelfDestroy
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - scriptableEvent: {fileID: 11400000, guid: ec29b174eace48d449abeef3ff36456f, type: 2}
+    onCalled:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3896923248068894209}
+          m_TargetAssemblyTypeName: Ball.BallController, Assembly-CSharp
+          m_MethodName: set_CanDash
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!96 &4621031926143292640
 TrailRenderer:
@@ -411,6 +442,18 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &706875558235696467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734135998656787607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac1eca3d4283114585c393e294458e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5569765381465586707
 GameObject:
   m_ObjectHideFlags: 0

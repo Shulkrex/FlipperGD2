@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96099b3ac2d95774a8db52d32c53bc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputs: {fileID: 11400000, guid: 79491fe2a78032d48a6d2b73dde39341, type: 2}
+  inputs: {fileID: 11400000, guid: 847e89af90c482540b38ad4e85e5b6d8, type: 2}
   onActivatePaddleL:
     m_PersistentCalls:
       m_Calls:
